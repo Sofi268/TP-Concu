@@ -1,2 +1,26 @@
-public class Archivo{
+import java.util.ArrayList;
+
+public class Archivo {
+    private ArrayList<Imagen> imagenes;
+    public Archivo() {
+        imagenes = new ArrayList<Imagen>(100);
+        for (int i = 1; i <= 100; i++){
+            imagenes.add(new Imagen("imagen-" + i));
+        }
+    }
+
+    public Imagen getImagen(){
+        if(getTamanio() != 0){
+            Imagen i = imagenes.get(0);
+            imagenes.remove(0);
+            return i;
+        }
+        return null;
+    }
+
+    public int getTamanio(){
+        synchronized (this){
+            return imagenes.size();
+        }
+    }
 }
