@@ -1,2 +1,37 @@
-public class Imagen{
+public class Imagen {
+    private String nombre;
+    private int improvements;
+    private boolean ajusteImagen;
+    private boolean mejoraIuminacion;
+    public Imagen(String nombre) {
+        this.nombre = nombre;
+        mejoraIuminacion = false;
+        ajusteImagen = false;
+    }
+
+    public void mejorarIluminacion(){
+        mejoraIuminacion = true;
+    }
+    public void ajustarTamanio(){
+        ajusteImagen = true;
+    }
+
+    public boolean getMejoraIluminacion(){
+        return mejoraIuminacion;
+    }
+
+    public boolean getAjustarImagen(){
+        return ajusteImagen;
+    }
+
+    public boolean imagenMejorada(){
+        if(getMejoraIluminacion() && getAjustarImagen()){
+            return true;
+        }
+        return false;
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
 }
