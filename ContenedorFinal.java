@@ -25,7 +25,7 @@ public class ContenedorFinal {
     public synchronized int getImagenesCopiadas() {
         return contenedorFinal.size();
     }
-    //Proceso 4
+    //Proceso 4:
     public ArrayList<Imagen> getContenedorFinal(){
         return contenedorFinal;
     }

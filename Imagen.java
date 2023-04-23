@@ -9,7 +9,7 @@ public class Imagen {
     private boolean tamanioAjustado;
     //matriz encargada de las interraciones con los hilos y procesos.
     private int[][] contador;
-    private long id1, id2, id3; //cuantas veces toca la imagen cada hilo.
+    private long id1, id2, id3; //cuantas veces toca la imagen cada hilo para mejorar la iluminacion.
     public Imagen() {
         improvements = 0;
         iluminacionMejorada = false;

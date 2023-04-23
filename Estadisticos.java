@@ -9,7 +9,8 @@ public class Estadisticos implements Runnable{
     private ContenedorFinal cf;
     private boolean listo;
     private int[][] contadorEstadistico;
-    public Estadisticos(ContenedorInicial ci, ContenedorFinal cf){
+    private Thread hilos[] = new Thread[10];
+    public Estadisticos(ContenedorInicial ci, ContenedorFinal cf,Thread hilos[]){
         this.ci = ci;
         this.cf = cf;
         listo = false;
@@ -19,36 +20,47 @@ public class Estadisticos implements Runnable{
                 {0,0,0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0}
         };
+        for(int i=0;i<10;i++){
+            this.hilos[i] = hilos[i];
+        }
     }
 
     @Override
     public void run() {
-        try {
-            FileWriter file = new FileWriter("D:\\UNC-Ing.Compu\\4to año\\Programacion concurrente\\TP1\\Carpeta compartida\\src\\LOG.txt");
-            PrintWriter pw = new PrintWriter(file);
+        try(FileWriter file = new FileWriter("D:\\UNC-Ing.Compu\\4to año\\Programacion concurrente\\TP1\\Carpeta compartida\\log.txt");
+            PrintWriter pw = new PrintWriter(file); ) {
             pw.println("************** Inicio del registro: *********");
-            while(!listo){
-                imprimir(pw);
+            while (!listo) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(500); //timepo que tardara en realizar la impresiones.
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+                imprimir(pw);
+                if (cf.getImagenesCopiadas() == 100) {
+                    listo = true;
+                }
             }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+        }catch (IOException e){}
     }
     public void imprimir(PrintWriter pw){
-        unificar(pw);
+        unificar();  //actualiza la matriz contadorEstadistico.
+        pw.printf("------------------------------------------------------------------------\n");
+        pw.printf("P1-Cantidad de imagenes insertadas en el contenedor: %s\n",(contadorEstadistico[0][0]+contadorEstadistico[0][1]));
+        pw.printf("P2-Cantidad de imagenes mejoradas completamente: %s\n",(contadorEstadistico[1][2]+contadorEstadistico[1][3])+contadorEstadistico[1][4]);
+        pw.printf("P3-cantidad de imagenes ajustadas: %s\n",(contadorEstadistico[2][5]+contadorEstadistico[2][6])+contadorEstadistico[2][7]);
+        pw.printf("P4-Cantidad de imagenes insertadas en el contenedor: %s\n",(contadorEstadistico[3][8]+contadorEstadistico[3][9]));
+        for(int i=0;i<10;i++){
+            pw.printf("Estado %s : %s \n",hilos[i].getName(),hilos[i].getState());
+        }
     }
-    public void unificar(PrintWriter pw){ //unifica las 100 imagenes. desde el contenedorInicial y el ContenedorFinal.
-        ArrayList<Imagen> ArregloAux = new ArrayList<>(100); //arreglo auxialiar
-        ArregloAux.addAll(ci.getContenedorInicial());
-        ArregloAux.addAll(cf.getContenedorFinal());
-        int[][] contadorAux= new int[][];
-
-        for(Imagen aux : ArregloAux){
+    public void unificar(){ //unifica las 100 imagenes. desde el contenedorInicial y el ContenedorFinal.
+        ArrayList<Imagen> listaAux = new ArrayList<>(100); //arreglo auxialiar
+        listaAux.addAll(ci.getContenedorInicial());
+        listaAux.addAll(cf.getContenedorFinal());
+        resetContador(); //borra la matriz contador, para cargar los nuevos valores...
+        int[][] contadorAux;
+        for(Imagen aux : listaAux){
             contadorAux = (aux.getContador());
             for(int i=0;i<4;i++){ //filas: procesos
                 for(int j=0;j<10;j++){ //columnas hilos.
@@ -56,36 +68,21 @@ public class Estadisticos implements Runnable{
                 }
             }
         }
-
-        for(Imagen aux : ArregloAux){
-            contadorAux = (aux.getContador());
-            for(int i=0;i<4;i++){ //filas: procesos
-                for(int j=0;j<10;j++){ //columnas hilos.
-                    System.out.print( contadorAux[i][j] + " ");
-                }
-                System.out.println("");
+        mostrar();
+    }
+    public void resetContador(){
+        for(int i=0;i<4;i++){ //filas: procesos
+            for(int j=0;j<10;j++){ //columnas hilos.
+                contadorEstadistico[i][j] = 0; //obtener arreglo del ci
             }
         }
-
-        System.out.println("--- cantidad de elementos de estadistica: " + ArregloAux.size());
-        //obtener arreglo del cf
+    }
+    public void mostrar(){  //a modo de prueba.
+        for(int i=0;i<4;i++) { //filas: procesos
+            for (int j = 0; j < 10; j++) { //columnas hilos.
+                System.out.print(contadorEstadistico[i][j] + " ");
+            }
+            System.out.println("");
+        }
     }
 }
-
-
-/*
-D:\UNC-Ing.Compu\4to año\Programacion concurrente\TP1\Carpeta compartida\src
-    FileWriter file = new FileWriter("D:\\UNC-Ing.Compu\\4to año\\Programacion concurrente\\clase 2\\registro_clase02.txt"); //direccion de la carpeta.
-    PrintWriter pw = new PrintWriter(file); //escritor para operar sobre el archivo.
-    pw.printf(); o pw.println(); // para escribir en el archivo .txt
-
- * 5) en un LOG con fines estadisticos, cada 500 ms.
- *   Cantidad de imagenes insertadas en el contenedor:
- *   Cantidad de imagenes mejoradas completamente.
- *   cantidad de imagenes ajustadas.
- *   Cantidad de imagenes que han finalizado el ultimo proceso.
- *   El estado de cada hilo del sistema: (10 hilos.)
- *       for(int i=0;i<10;i++){
- *           ("Estado del Hilo %s: ",i,h[i].state());
- *       }
- * */

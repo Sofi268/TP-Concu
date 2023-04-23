@@ -6,7 +6,7 @@ public class CargarCopia implements Runnable {
     private ContenedorInicial ci;
     private ContenedorFinal cf;
     private boolean listo;
-    public CargarCopia(ContenedorInicial ci, ContenedorFinal cf) {
+    public CargarCopia(ContenedorInicial ci, ContenedorFinal cf, Thread[] hilos) {
         this.ci = ci;
         this.cf = cf;
         listo = false;
