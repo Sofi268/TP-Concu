@@ -5,10 +5,10 @@ import java.util.concurrent.TimeUnit;
  * Esta clase simula un contendedor dentro de una aplicacion para editar fotos, tanto en Tamaño como en Iluminacion.
  * LLeva el control para que las variables compartidas/atributos de la imagen no se corrompan,
  * como asi tambien, la secuencia en que cada imagen debe ser editada.
- *
  */
 public class ContenedorInicial{
     private ArrayList<Imagen> contenedorInicial;
+    //contadores:
     private int imagenesMejoradas;
     private int imagenesAjustadas;
     private boolean listo;
@@ -26,16 +26,21 @@ public class ContenedorInicial{
      */
     public synchronized void agregarImagen(Imagen i){
         if(cantidadDeImagenes() != 100){
-            i.setNombre("Imagen" + cantidadDeImagenes());
+            i.setNombre("Imagen" + (cantidadDeImagenes()+1)); //cambia el nombre de cada imagen
+            String aux = Thread.currentThread().getName();
+            if(aux.equals("Thread-0")){
+                i.setContador(0,0);
+            }else{
+                i.setContador(0,1);
+            }
             contenedorInicial.add(i);
             try {
                 TimeUnit.MILLISECONDS.sleep(25);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("Hilo " + Thread.currentThread().getName() + ": imagen-" + cantidadDeImagenes());
+            System.out.println("Hilo " + Thread.currentThread().getName() + " : " + i.getNombre() ); //mostar por pantalla.
         }
-
     }
 
     /**
@@ -52,18 +57,30 @@ public class ContenedorInicial{
      * Si ya fue modificada por los tres hilos, no puede ser vuelta a tomar
      */
     public void getImagenAMejorar(int indice){
-        synchronized (contenedorInicial.get(indice)){
-            if(!contenedorInicial.get(indice).getIluminacion()){
-                contenedorInicial.get(indice).setImprovements();
-                try {
-                    TimeUnit.MICROSECONDS.sleep(8333);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                if(contenedorInicial.get(indice).getIluminacion()){
+        if(contenedorInicial.get(indice) != null) {
+            synchronized (contenedorInicial.get(indice)) {
+                if (!contenedorInicial.get(indice).getIluminacion()) { //verifica si ya fue mejorada por los 3 hilos.
+                    contenedorInicial.get(indice).setImprovements();
+                    String aux = Thread.currentThread().getName();
+                    if (aux.equals("Thread-2")) {
+                        contenedorInicial.get(indice).setContador(1, 2);
+                    } else {
+                        if (aux.equals("Thread-3")) {
+                            contenedorInicial.get(indice).setContador(1, 3);
+                        } else {
+                            contenedorInicial.get(indice).setContador(1, 4);
+                        }
+                    }
+                    try {
+                        TimeUnit.MICROSECONDS.sleep(8333);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    if (contenedorInicial.get(indice).getIluminacion()) {
 
-                    String s = contenedorInicial.get(indice).getNombre();
-                    setImagenesMejoradas(s);
+                        String s = contenedorInicial.get(indice).getNombre();
+                        setImagenesMejoradas(s);
+                    }
                 }
             }
         }
@@ -84,22 +101,33 @@ public class ContenedorInicial{
      * @return
      */
     public int getImagenesMejoradas() {
-        synchronized (this){
+        synchronized (this) {
             return imagenesMejoradas;
         }
     }
-
     public void getImagenAAjustar(int indice, int l, int a){
-        synchronized (contenedorInicial.get(indice)){
-            if(contenedorInicial.get(indice).getIluminacion() && !contenedorInicial.get(indice).getTamanio()){
-                contenedorInicial.get(indice).setTamanio(l, a);
-                try {
-                    TimeUnit.MICROSECONDS.sleep(8333);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+        if(contenedorInicial.get(indice) != null) {
+            synchronized (contenedorInicial.get(indice)) {
+                if (contenedorInicial.get(indice).getIluminacion() && !contenedorInicial.get(indice).getTamanio()) {
+                    contenedorInicial.get(indice).setTamanio(l, a);
+                    String aux = Thread.currentThread().getName();
+                    if (aux.equals("Thread-5")) {
+                        contenedorInicial.get(indice).setContador(2, 5);
+                    } else {
+                        if (aux.equals("Thread-6")) {
+                            contenedorInicial.get(indice).setContador(2, 6);
+                        } else {
+                            contenedorInicial.get(indice).setContador(2, 7);
+                        }
+                    }
+                    try {
+                        TimeUnit.MICROSECONDS.sleep(8333);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    String s = contenedorInicial.get(indice).getNombre();
+                    setImagenesAjustadas(s);
                 }
-                String s = contenedorInicial.get(indice).getNombre();
-                setImagenesAjustadas(s);
             }
         }
     }
@@ -114,12 +142,27 @@ public class ContenedorInicial{
             return imagenesAjustadas;
         }
     }
-
-    public Imagen editada(int indice){
-        if(contenedorInicial.get(indice).getIluminacion() && contenedorInicial.get(indice).getTamanio()){
-
+    // Proceso 4:
+    public Imagen sacarImagen(int indice){
+        if(contenedorInicial.get(indice) != null) {
+            if (contenedorInicial.get(indice).getIluminacion() && contenedorInicial.get(indice).getTamanio()) {
+                String aux = Thread.currentThread().getName();
+                if (aux.equals("Thread-8")) {
+                    contenedorInicial.get(indice).setContador(3, 8);
+                } else{
+                    contenedorInicial.get(indice).setContador(3, 9);
+                }
+                try {
+                    TimeUnit.MICROSECONDS.sleep(5333);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                Imagen AUX = contenedorInicial.get(indice);
+                //contenedorInicial.remove(indice);
+                return AUX;
+            }
+            return null; //no esta listo el objeto
         }
-        return null;
+        return null; //no hay opbjeto
     }
-
 }

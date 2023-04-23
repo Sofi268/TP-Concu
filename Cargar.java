@@ -1,19 +1,21 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Cargar implements Runnable{
     ContenedorInicial ci;
-    ContenedorFinal cf;
     private boolean listo;
-    public Cargar(ContenedorInicial ci, ContenedorFinal cf) {
+    private Random rand;
+    public Cargar(ContenedorInicial ci) {
         this.ci = ci;
+        rand = new Random();
         listo = false;
     }
 
     @Override
     public void run() {
-        while (!listo){
+        while (!listo) {
             ci.agregarImagen(new Imagen());
-            if(ci.cantidadDeImagenes() == 100){
+            if (ci.cantidadDeImagenes() == 100) {
                 listo = true;
             }
         }

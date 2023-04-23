@@ -17,7 +17,7 @@ public class MejoraIluminacion implements Runnable{
         }
     }
 
-    public void mejorarIluminacion(){
+    public void mejorarIluminacion(){ //syncronized
         c.getImagenAMejorar(rand.nextInt(100));
         setListo();
     }
