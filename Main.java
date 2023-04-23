@@ -5,17 +5,22 @@ public class Main {
     public static void main(String[] args) {
         ContenedorInicial ci = new ContenedorInicial();
         ContenedorFinal cf = new ContenedorFinal();
-        Cargar c1 = new Cargar(ci, cf);
-        Thread h0 = new Thread(c1);
-        Thread h1 = new Thread(c1);
+        Cargar c = new Cargar(ci);
+
+        Thread h0 = new Thread(c);
+        Thread h1 = new Thread(c);
+
         h0.start();
         h1.start();
+
         try {
             h0.join();
             h1.join();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        System.out.printf("Imagenes en contenedor origen : %d\n",ci.getCantidadImagenes());
+        System.out.printf("Imagenes copiadas : %d \n",cf.getImagenesCopiadas());
 
         MejoraIluminacion mi = new MejoraIluminacion(ci);
         AjustarTamanio at = new AjustarTamanio(ci);
@@ -26,10 +31,6 @@ public class Main {
         Thread h5 = new Thread(at);
         Thread h6 = new Thread(at);
         Thread h7 = new Thread(at);
-        CargarCopia c2 = new CargarCopia(ci, cf);
-
-        Thread h8 = new Thread(c2);
-        Thread h9 = new Thread(c2);
 
         h2.start();
         h3.start();
@@ -38,8 +39,6 @@ public class Main {
         h5.start();
         h6.start();
         h7.start();
-        h8.start();
-        h9.start();
 
         try {
             h2.join();
@@ -48,28 +47,30 @@ public class Main {
             h5.join();
             h6.join();
             h7.join();
-            h8.join();
-            h9.join();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-       /* h8.start();
+
+        CargarCopia c2 = new CargarCopia(ci, cf);
+        Thread h8 = new Thread(c2);
+        Thread h9 = new Thread(c2);
+
+        h8.start();
         h9.start();
+
         try {
             h8.join();
             h9.join();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        }*/
+        }
+        System.out.printf("Imagenes en contenedor origen : %d\n",ci.getCantidadImagenes());
+        System.out.printf("Imagenes copiadas : %d \n",cf.getImagenesCopiadas());
 
     }
 }
 
 /*
- * Idea General:
- *   los join() luego se colocan para secuencias los procesos. para que el siguiente proceso arranque luego del anterior.
- *
- *
  * Consideraciones:
  * 1) La imagen tiene un atributo "implements" el cual registra cuantos hilos la tomaron.
  * 2)L Se deben definir tiempo NO NULO en los procesos.

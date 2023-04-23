@@ -8,18 +8,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class ContenedorInicial{
     private ArrayList<Imagen> contenedorInicial;
-    //contadores:
     private int imagenesMejoradas;
     private int imagenesAjustadas;
-    private boolean listo;
     public ContenedorInicial() {
         contenedorInicial = new ArrayList<Imagen>(100);
-        listo = false;
         imagenesMejoradas = 0;
         imagenesAjustadas = 0;
     }
 
-
+    //Proceso 1: cargar las 100 imagenes en el contenedor inicial.
     /**
      * Este metodo controla que los hilos ingresen y lean la cantidad de imagenes de a uno por vez
      * @param i
@@ -61,6 +58,7 @@ public class ContenedorInicial{
             synchronized (contenedorInicial.get(indice)) {
                 if (!contenedorInicial.get(indice).getIluminacion()) { //verifica si ya fue mejorada por los 3 hilos.
                     contenedorInicial.get(indice).setImprovements();
+
                     String aux = Thread.currentThread().getName();
                     if (aux.equals("Thread-2")) {
                         contenedorInicial.get(indice).setContador(1, 2);
@@ -71,13 +69,13 @@ public class ContenedorInicial{
                             contenedorInicial.get(indice).setContador(1, 4);
                         }
                     }
+
                     try {
                         TimeUnit.MICROSECONDS.sleep(8333);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                     if (contenedorInicial.get(indice).getIluminacion()) {
-
                         String s = contenedorInicial.get(indice).getNombre();
                         setImagenesMejoradas(s);
                     }
@@ -142,10 +140,10 @@ public class ContenedorInicial{
             return imagenesAjustadas;
         }
     }
-    // Proceso 4:
-    public Imagen sacarImagen(int indice){
-        if(contenedorInicial.get(indice) != null) {
-            if (contenedorInicial.get(indice).getIluminacion() && contenedorInicial.get(indice).getTamanio()) {
+    // Proceso 4: Realilzar copia en contenedor final y borrar el original.
+    public Imagen sacarImagen(int indice) {
+        try{
+            if(contenedorInicial.get(indice).getIluminacion() && contenedorInicial.get(indice).getTamanio()){
                 String aux = Thread.currentThread().getName();
                 if (aux.equals("Thread-8")) {
                     contenedorInicial.get(indice).setContador(3, 8);
@@ -153,16 +151,18 @@ public class ContenedorInicial{
                     contenedorInicial.get(indice).setContador(3, 9);
                 }
                 try {
-                    TimeUnit.MICROSECONDS.sleep(5333);
+                    TimeUnit.MICROSECONDS.sleep(3333);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
                 Imagen AUX = contenedorInicial.get(indice);
-                //contenedorInicial.remove(indice);
+                contenedorInicial.remove(indice);
                 return AUX;
             }
-            return null; //no esta listo el objeto
-        }
-        return null; //no hay opbjeto
+        }catch (IndexOutOfBoundsException e){}
+        return null;
+    }
+    public int getCantidadImagenes(){
+        return contenedorInicial.size();
     }
 }
