@@ -1,5 +1,9 @@
 import java.util.Random;
 
+/**
+ * Proceso 3: Ajustar tamanio de las imagenes a un tamanio solicitado, en un tiempo aleatorio.
+ * cantidad de hilos: 3
+ */
 public class AjustarTamanio implements Runnable{
     private ContenedorInicial c;
     private Random rand;

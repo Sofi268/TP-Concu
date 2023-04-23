@@ -81,7 +81,11 @@ public class Imagen {
         }
 
     }
-    public void setContador(int proceso, int hilo){
+    //sincronizados para que el valor que se obtiene de contador sea lo mas preciso posible.
+    public synchronized void setContador(int proceso, int hilo){
         contador[proceso][hilo] ++;
+    }
+    public synchronized int[][] getContador(){
+        return contador;
     }
 }

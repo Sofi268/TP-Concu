@@ -1,4 +1,9 @@
 import java.util.ArrayList;
+
+/**
+ * Proceso 1: Cargar imagenes en un contenedor inicial, en un tiempo aleatorio
+ * Cantidad de hilos: 2
+ */
 public class Cargar implements Runnable{
     ContenedorInicial ci;
     private boolean listo;

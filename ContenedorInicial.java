@@ -151,7 +151,7 @@ public class ContenedorInicial{
                     contenedorInicial.get(indice).setContador(3, 9);
                 }
                 try {
-                    TimeUnit.MICROSECONDS.sleep(3333);
+                    TimeUnit.MICROSECONDS.sleep(8300); //tiempo en sacar la imagen del contenedor inicial.
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -164,5 +164,9 @@ public class ContenedorInicial{
     }
     public int getCantidadImagenes(){
         return contenedorInicial.size();
+    }
+    //proceso 4
+    public ArrayList<Imagen> getContenedorInicial(){
+        return contenedorInicial;
     }
 }
