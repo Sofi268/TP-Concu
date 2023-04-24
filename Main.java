@@ -4,7 +4,7 @@
 public class Main {
     public static void main(String[] args) {
         //Runtime.getRuntime().availableProcessors(); //cantidad de hilos del sistema.
-        //creacion de hilos:
+        //CREACION DE HILOS:
         Thread hilos[] = new Thread[10]; //Definimos el tamaño 10 para los hilos.
         ContenedorInicial ci = new ContenedorInicial();
         ContenedorFinal cf = new ContenedorFinal();
@@ -22,25 +22,22 @@ public class Main {
         Thread h6 = new Thread(at); hilos[6] = h6;
         Thread h7 = new Thread(at); hilos[7] = h7;
 
-        CargarCopia c2 = new CargarCopia(ci, cf,hilos);           //proceso 4
+        CargarCopia c2 = new CargarCopia(ci, cf,hilos);     //proceso 4
         Thread h8 = new Thread(c2); hilos[8] = h8;
         Thread h9 = new Thread(c2); hilos[9] = h9;
 
-        Estadisticos est = new Estadisticos(ci,cf,hilos);//encargado de hacer el LOG estadistico:
+        Estadisticos est = new Estadisticos(ci,cf,hilos);       //encargado de hacer el LOG estadistico.
         Thread h10 = new Thread(est);
-        //h10.setDaemon(true); //hilo daemon, hilo que se ejecutara en segundo plano. y finalizara cuando terminen los otros 10 hilos en ejecucion.
-        h10.start();
+            //h10.setDaemon(true); //hilo daemon: fue descartado ya que queremos cerrar el programa con un resumen final de los procesos terminados y completados.
 
-        //manejo de hilos:
+        //COMIENZO DE EJECUCION DE HILOS:
+        h10.start();
         h0.start();
         h1.start();
         try {
             h0.join();
             h1.join();
         } catch (InterruptedException e) { throw new RuntimeException(e);}
-
-        System.out.printf("Imagenes en contenedor origen : %d\n",ci.getCantidadImagenes());
-        System.out.printf("Imagenes copiadas : %d \n",cf.getImagenesCopiadas());
 
         h2.start();
         h3.start();
@@ -60,15 +57,21 @@ public class Main {
         h8.start();
         h9.start();
 
+        //FINALIZACION DE HILOS:
         try {
+            /*h0.join();
+            h1.join();
+            h2.join();
+            h3.join();
+            h4.join();
+            h5.join();
+            h6.join();
+            h7.join();*/
             h8.join();
             h9.join();
             h10.join();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.printf("Imagenes en contenedor origen : %d\n",ci.getCantidadImagenes());
-        System.out.printf("Imagenes copiadas : %d \n",cf.getImagenesCopiadas());
-
     }
 }

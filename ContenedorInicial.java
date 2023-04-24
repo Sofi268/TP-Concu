@@ -26,12 +26,7 @@ public class ContenedorInicial{
             i.setNombre("Imagen" + (cantidadDeImagenes()+1)); //cambia el nombre de cada imagen
 
             String aux = Thread.currentThread().getName();
-            if(aux.equals("Thread-0")){
-                i.setContador(0,0);
-            }else{
-                i.setContador(0,1);
-            }
-
+                i.setImprovements(0,aux);
             contenedorInicial.add(i);
             try {
                 TimeUnit.MILLISECONDS.sleep(25);
@@ -65,17 +60,8 @@ public class ContenedorInicial{
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
+
                     if (contenedorInicial.get(indice).getIluminacion()) {
-                        String aux = Thread.currentThread().getName();
-                        if (aux.equals("Thread-2")) {
-                            contenedorInicial.get(indice).setContador(1, 2);
-                        } else {
-                            if (aux.equals("Thread-3")) {
-                                contenedorInicial.get(indice).setContador(1, 3);
-                            } else {
-                                contenedorInicial.get(indice).setContador(1, 4);
-                            }
-                        }
                         String s = contenedorInicial.get(indice).getNombre();
                         setImagenesMejoradas(s);
                     }
@@ -110,15 +96,7 @@ public class ContenedorInicial{
                     contenedorInicial.get(indice).setTamanio(l, a);
 
                     String aux = Thread.currentThread().getName();
-                    if (aux.equals("Thread-5")) {
-                        contenedorInicial.get(indice).setContador(2, 5);
-                    } else {
-                        if (aux.equals("Thread-6")) {
-                            contenedorInicial.get(indice).setContador(2, 6);
-                        } else {
-                            contenedorInicial.get(indice).setContador(2, 7);
-                        }
-                    }
+                    contenedorInicial.get(indice).setImprovements(2, aux);
 
                     try {
                         TimeUnit.MICROSECONDS.sleep(8333);
@@ -148,11 +126,8 @@ public class ContenedorInicial{
             if(contenedorInicial.get(indice).getIluminacion() && contenedorInicial.get(indice).getTamanio()){
 
                 String aux = Thread.currentThread().getName();
-                if (aux.equals("Thread-8")) {
-                    contenedorInicial.get(indice).setContador(3, 8);
-                } else{
-                    contenedorInicial.get(indice).setContador(3, 9);
-                }
+                contenedorInicial.get(indice).setImprovements(3, aux);
+
                 try {
                     TimeUnit.MICROSECONDS.sleep(8300); //tiempo en sacar la imagen del contenedor inicial.
                 } catch (InterruptedException e) {
