@@ -58,21 +58,20 @@ public class Imagen {
      * Este metodo lleva el control de cuntos hilos modificaron la Iluminacion de la Imagen.
      * No permite que el mismo hilo modifique la iluminacion mas de una vez.
      */
-    public void setImprovements() {
-        String aux = Thread.currentThread().getName();
+    public synchronized void setImprovements() {
         if(id1 == 0){    //ya lo toco el h1
             id1 = Thread.currentThread().getId();
-            setImprovements(1, aux);
+            setImprovements(1, Thread.currentThread().getName());
         }
         else{
             if(id2 == 0 && id1 != Thread.currentThread().getId()){
                 id2 = Thread.currentThread().getId();
-                setImprovements(1, aux);
+                setImprovements(1, Thread.currentThread().getName());
             }
             else{
                 if(id3 == 0 && id1 != Thread.currentThread().getId() && id2 != Thread.currentThread().getId()){
                     id3 = Thread.currentThread().getId();
-                    setImprovements(1, aux);
+                    setImprovements(1, Thread.currentThread().getName());
                     setIluminacion(); //iluminacionMejorada a true
                 }
             }
