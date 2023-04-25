@@ -1,3 +1,6 @@
+/**
+ * Clase Imagen:
+ */
 public class Imagen {
     private String nombre;
     private int largo;
