@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Estadistico: encargado de controlar cuantas imagenes estan en cada proceso.
+ */
 public class Estadisticos implements Runnable{
     private ContenedorInicial ci;
     private ContenedorFinal cf;
@@ -30,7 +33,7 @@ public class Estadisticos implements Runnable{
     public void run() {
         try(FileWriter file = new FileWriter("D:\\UNC-Ing.Compu\\4to año\\Programacion concurrente\\TP1\\Carpeta compartida\\log.txt");
             PrintWriter pw = new PrintWriter(file); ) {
-            pw.printf("************** Inicio del registro: %s *********", new Date());
+            pw.printf("************** Inicio del registro: %s ********* ", new Date());
             while (!listo) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(500); //timepo que tardara en realizar la impresiones.

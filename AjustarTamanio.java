@@ -1,6 +1,6 @@
 /**
  * Proceso 3: Ajustar tamanio de las imagenes a un tamanio solicitado, en un tiempo aleatorio.
- * cantidad de hilos: 3
+ * cantidad de hilos:3
  */
 public class AjustarTamanio extends Edicion implements Runnable{
     
@@ -16,6 +16,6 @@ public class AjustarTamanio extends Edicion implements Runnable{
     }
     public void ajustarTamanio(int l, int a){  //largo y  ancho
         c.getImagenAAjustar(rand.nextInt(100), l, a);
-        setListo(c.getImagenesMejoradas());
+        setListo(c.getImagenesAjustadas());
     }
 }

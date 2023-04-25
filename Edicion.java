@@ -1,4 +1,8 @@
 import java.util.Random;
+
+/**
+ * Clase padre Edicion:
+ */
 public class Edicion {
     protected ContenedorInicial c;
     protected Random rand;

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Contenedor Inicial:
  * Esta clase simula un contendedor dentro de una aplicacion para editar fotos, tanto en Tamaño como en Iluminacion.
  * LLeva el control para que las variables compartidas/atributos de la imagen no se corrompan,
  * como asi tambien, la secuencia en que cada imagen debe ser editada.
@@ -10,10 +11,12 @@ public class ContenedorInicial{
     private ArrayList<Imagen> contenedorInicial;
     private int imagenesMejoradas;
     private int imagenesAjustadas;
-    public ContenedorInicial() {
+    private double tiempo;
+    public ContenedorInicial(double tiempo) {
         contenedorInicial = new ArrayList<Imagen>(100);
         imagenesMejoradas = 0;
         imagenesAjustadas = 0;
+        this.tiempo = tiempo;
     }
 
     //Proceso 1: cargar las 100 imagenes en el contenedor inicial.
@@ -29,7 +32,7 @@ public class ContenedorInicial{
                 i.setImprovements(0,aux);
             contenedorInicial.add(i);
             try {
-                TimeUnit.MILLISECONDS.sleep(25);
+                TimeUnit.MILLISECONDS.sleep((long)(tiempo));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -51,12 +54,12 @@ public class ContenedorInicial{
      * Si ya fue modificada por los tres hilos, no puede ser vuelta a tomar
      */
     public void getImagenAMejorar(int indice){
-        if(contenedorInicial.get(indice) != null) { //modificar -> try-catch.
+        try {
             synchronized (contenedorInicial.get(indice)) {
                 if (!contenedorInicial.get(indice).getIluminacion()) { //verifica si ya fue mejorada por los 3 hilos.
                     contenedorInicial.get(indice).setImprovements();
                     try {
-                        TimeUnit.MICROSECONDS.sleep(8333);
+                        TimeUnit.MILLISECONDS.sleep((long)(tiempo/2));
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -67,7 +70,7 @@ public class ContenedorInicial{
                     }
                 }
             }
-        }
+        }catch (IndexOutOfBoundsException e){}
     }
 
     /**
@@ -90,7 +93,7 @@ public class ContenedorInicial{
         }
     }
     public void getImagenAAjustar(int indice, int l, int a){
-        if(contenedorInicial.get(indice) != null) { //modificar try-cath
+        try{
             synchronized (contenedorInicial.get(indice)) {
                 if (contenedorInicial.get(indice).getIluminacion() && !contenedorInicial.get(indice).getTamanio()) {
                     contenedorInicial.get(indice).setTamanio(l, a);
@@ -99,7 +102,7 @@ public class ContenedorInicial{
                     contenedorInicial.get(indice).setImprovements(2, aux);
 
                     try {
-                        TimeUnit.MICROSECONDS.sleep(8333);
+                        TimeUnit.MILLISECONDS.sleep((long)(tiempo*3) );
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -107,7 +110,7 @@ public class ContenedorInicial{
                     setImagenesAjustadas(s);
                 }
             }
-        }
+        }catch (IndexOutOfBoundsException e){}
     }
     public void setImagenesAjustadas(String s){
         synchronized (this){
@@ -124,12 +127,8 @@ public class ContenedorInicial{
     public Imagen sacarImagen(int indice) {
         try{
             if(contenedorInicial.get(indice).getIluminacion() && contenedorInicial.get(indice).getTamanio()){
-
-                String aux = Thread.currentThread().getName();
-                contenedorInicial.get(indice).setImprovements(3, aux);
-
                 try {
-                    TimeUnit.MICROSECONDS.sleep(8300); //tiempo en sacar la imagen del contenedor inicial.
+                    TimeUnit.MILLISECONDS.sleep((long)(tiempo/2));//tiempo en sacar la imagen del contenedor inicial.
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

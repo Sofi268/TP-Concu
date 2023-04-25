@@ -1,13 +1,18 @@
-/*
+import java.util.Date;
+/**
 * Trabajo Practico n°1: Mejoramiento de iluminacion y ajuste de tamaño de 100 imagenes.
+ *
 * */
 public class Main {
+    public static double tiempo;
     public static void main(String[] args) {
-        //Runtime.getRuntime().availableProcessors(); //cantidad de hilos del sistema.
+        Date hora0 = new Date();
+        tiempo = 100; //
+        int numProc = Runtime.getRuntime().availableProcessors(); //cantidad de hilos del sistema.
         //CREACION DE HILOS:
         Thread hilos[] = new Thread[10]; //Definimos el tamaño 10 para los hilos.
-        ContenedorInicial ci = new ContenedorInicial();
-        ContenedorFinal cf = new ContenedorFinal();
+        ContenedorInicial ci = new ContenedorInicial(tiempo);
+        ContenedorFinal cf = new ContenedorFinal(tiempo);
 
         Cargar c = new Cargar(ci);                          //proceso 1
         Thread h0 = new Thread(c); hilos[0] = h0;
@@ -38,7 +43,7 @@ public class Main {
             h0.join();
             h1.join();
         } catch (InterruptedException e) { throw new RuntimeException(e);}
-
+        Date hora1 = new Date();
         h2.start();
         h3.start();
         h4.start();
@@ -53,7 +58,8 @@ public class Main {
             h6.join();
             h7.join();
         } catch (InterruptedException e) { throw new RuntimeException(e); }
-
+        Date hora2 = new Date();
+        //Date hora3 = new Date();
         h8.start();
         h9.start();
 
@@ -73,5 +79,11 @@ public class Main {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        Date hora4 = new Date();
+        int t1 = ((hora1.getMinutes()-hora0.getMinutes())*60)+(hora1.getSeconds()-hora0.getSeconds());
+        int t2 = ((hora2.getMinutes()-hora1.getMinutes())*60)+(hora2.getSeconds()-hora1.getSeconds());
+        int t4 = ((hora4.getMinutes()-hora2.getMinutes())*60)+(hora4.getSeconds()-hora2.getSeconds());
+        System.out.printf("\n tiempos: P1(%d seg) - P2(%d seg) - P3(%d seg) - P4(%d seg)",t1,t2,t3,t4);
+        System.out.printf("\n tiempo total: %d -  con %d procesadores" , (t1+t2+t4), numProc);
     }
 }
