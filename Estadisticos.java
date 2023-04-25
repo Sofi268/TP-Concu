@@ -14,6 +14,7 @@ public class Estadisticos implements Runnable{
     private boolean listo;
     private int[][] contadorEstadistico;
     private Thread hilos[] = new Thread[10];
+    private int cantidadDeMuestras;
     public Estadisticos(ContenedorInicial ci, ContenedorFinal cf,Thread hilos[]){
         this.ci = ci;
         this.cf = cf;
@@ -27,6 +28,7 @@ public class Estadisticos implements Runnable{
         for(int i=0;i<10;i++){
             this.hilos[i] = hilos[i];
         }
+        cantidadDeMuestras =0;
     }
 
     @Override
@@ -41,10 +43,12 @@ public class Estadisticos implements Runnable{
                     throw new RuntimeException(e);
                 }
                 imprimir(pw);
+                cantidadDeMuestras ++ ;
                 if (cf.getImagenesCopiadas() == 100) {
                     listo = true;
                 }
             }
+            mostrar();
         }catch (IOException e){}
     }
     public void imprimir(PrintWriter pw){
@@ -72,7 +76,6 @@ public class Estadisticos implements Runnable{
                 }
             }
         }
-        //mostrar();
     }
     public void resetContador(){
         for(int i=0;i<4;i++){ //filas: procesos
@@ -88,5 +91,10 @@ public class Estadisticos implements Runnable{
             }
             System.out.println("");
         }
+        System.out.printf("P1-Cantidad de imagenes insertadas en el contenedor: %s\n",(contadorEstadistico[0][0]+contadorEstadistico[0][1]));
+        System.out.printf("P2-Cantidad de imagenes mejoradas completamente por hilo: HILO_2:(%s) - HILO_3:(%s)  - HILO_4:(%s)  \n",contadorEstadistico[1][2],contadorEstadistico[1][3],contadorEstadistico[1][4]);
+        System.out.printf("P3-cantidad de imagenes ajustadas: %s\n",(contadorEstadistico[2][5]+contadorEstadistico[2][6])+contadorEstadistico[2][7]);
+        System.out.printf("P4-Cantidad de imagenes insertadas en el contenedor: %s\n",(contadorEstadistico[3][8]+contadorEstadistico[3][9]));
+        System.out.printf("Cantidad de muestras: %d ",cantidadDeMuestras);
     }
 }
