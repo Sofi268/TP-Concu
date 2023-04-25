@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * Cantidad de hilos:2
  */
 public class Cargar implements Runnable{
-    ContenedorInicial ci;
+    private ContenedorInicial ci;
     private boolean listo;
     public Cargar(ContenedorInicial ci) {
         this.ci = ci;
