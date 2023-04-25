@@ -15,7 +15,7 @@ public class AjustarTamanio extends Edicion implements Runnable{
         }
     }
     public void ajustarTamanio(int l, int a){  //largo y  ancho
-        c.getImagenAAjustar(rand.nextInt(100), l, a);
+        c.getImagenAAjustar(l,a);
         setListo(c.getImagenesAjustadas());
     }
 }
