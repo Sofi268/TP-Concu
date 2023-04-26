@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 /**
- * Imagen: es la clase que modela los atributos, caracteristicas.DA INFORMACION.
+ * Imagen: es la clase que modela los atributos, caracteristicas.DA INFORMACION sobre la imagen
  * Se le puede pedir: sus datos basicos(nombre)
  */
 public class Imagen {
