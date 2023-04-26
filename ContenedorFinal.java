@@ -6,13 +6,22 @@ import java.util.ArrayList;
  * acciones sobre los elementos: Agregar.
  */
 public class ContenedorFinal {
-    private ArrayList<Imagen> contenedorInicial;
-
+    private ArrayList<Imagen> contenedorFinal;
     /**
      * Constructor de la clase ContenedorFinal.
      * @param contenedorInicial
      */
     public ContenedorFinal() {
-        contenedorInicial = new ArrayList<>(100);
+        contenedorFinal = new ArrayList<>(100);
+    }
+
+    /**
+     * Para agregar una imagen al contenedor final.
+     */
+    public synchronized void copiar(){
+
+    }
+    public synchronized ArrayList<Imagen> getContenedorFinal() {
+        return contenedorFinal;
     }
 }
