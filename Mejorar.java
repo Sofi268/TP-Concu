@@ -4,7 +4,15 @@
  * Acciones que realiza: *completar.
  */
 public class Mejorar implements Runnable{
+    private long tiempo;
+    private boolean listo;
+    private int imagenesMejoradas;
 
+    public Mejorar(long tiempo) {
+        this.tiempo = tiempo;
+        listo = false;
+        imagenesMejoradas = 0;
+    }
     @Override
     public void run() {
 

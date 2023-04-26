@@ -10,22 +10,21 @@ public class Main {
     public static void main(String[] args) {
         Thread hilos[] = new Thread[11]; //Arreglo para 11 hilos
         //clases comunes:
-        tiempo = 15000;  //setamos cuanto tiempo queremos que dure el proceso.en milisegundos (ms)
-            // Cada proceso se encargara de administrar con ese tiempo, cuanto deberan tardar cada Accion. formula: *a confirmar por el encargado de clase Testeo.
+        tiempo = 12000;  //setamos cuanto tiempo queremos que dure el proceso.en milisegundos (ms)
         Testeo prueba = new Testeo(tiempo);  //para comenzar con las pruebas.
-        prueba.inicio();
+        prueba.test_Cargar();
 
         ContenedorInicial ci = new ContenedorInicial();  //donde se cargaran las imagenes.
         ContenedorFinal cf = new ContenedorFinal();
         //creacion de procesos.
         Estadistico log = new Estadistico();
-        Cargar carga = new Cargar();    //Proceso 1:cargar las imagenes.
-        Mejorar mejora = new Mejorar(); //Proceso 2:Mejorar iluminacion de las imagenes.
-        Ajustar ajuste = new Ajustar(); //Proceso 3:Ajustar el tamaño de las imagenes.
-        CargarCopia cargaCopia = new CargarCopia(); //Proceso 4:CargarCopia de las imagenes.
+        Cargar carga = new Cargar(tiempo);    //Proceso 1:cargar las imagenes.
+        Mejorar mejora = new Mejorar(tiempo); //Proceso 2:Mejorar iluminacion de las imagenes.
+        Ajustar ajuste = new Ajustar(tiempo); //Proceso 3:Ajustar el tamaño de las imagenes.
+        CargarCopia cargaCopia = new CargarCopia(tiempo); //Proceso 4:CargarCopia de las imagenes.
 
         //Creacion de Hilos. nota: modificar parametros a demanda.
-        Thread hilo0 = new Thread(log);  hilos[0]=hilo0 ; //Estadistico.
+        Thread hilo0 = new Thread();  hilos[0]=hilo0 ; //Estadistico.
         Thread hilo1 = new Thread();  hilos[1]=hilo1; //P1:Carga.
         Thread hilo2 = new Thread();  hilos[2]=hilo2; //P1:Carga.
         Thread hilo3 = new Thread();  hilos[3]=hilo3; //P2:Mejora de iluminacion.

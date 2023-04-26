@@ -80,4 +80,5 @@ public class ContenedorInicial {
  *           el rango establecido sera la cantidad de elementos que contenga la lista en ese momento.
  *           EJ: rand.nextInt(getContenedorInicial().size()-1);  //genera un n random del 0 a la cantidad de elementos. el -1: por la diferencia entre el indice de la lista que comienza en 0.
  *   3) Reformular la parde Doc a gusto del Programador.
+ *   4) tiempo: Cada proceso se encargara de administrar con ese tiempo, cuanto deberan tardar cada Accion.formula: (tiempo * hilos )/( 100 * actividades_sobre_cada_imagen )
  *  */

@@ -3,7 +3,6 @@
  */
 public class Estadistico implements Runnable{
 
-
     @Override
     public void run() {
 

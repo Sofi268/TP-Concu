@@ -4,8 +4,14 @@
  * Acciones que realiza: *completar
  */
 public class CargarCopia implements Runnable{
-
-
+    private long tiempo;
+    private boolean listo;
+    private int imagenesCopiadas;
+    public CargarCopia(long tiempo) {
+        this.tiempo = tiempo;
+        listo = false;
+        imagenesCopiadas = 0;
+    }
     @Override
     public void run() {
 
