@@ -7,12 +7,21 @@ import java.util.ArrayList;
  */
 public class ContenedorFinal {
     private ArrayList<Imagen> contenedorInicial;
-
     /**
      * Constructor de la clase ContenedorFinal.
      * @param contenedorInicial
      */
     public ContenedorFinal() {
         contenedorInicial = new ArrayList<>(100);
+    }
+
+    /**
+     * Para agregar una imagen al contenedor final.
+     */
+    public synchronized void copiar(){
+
+    }
+    public synchronized ArrayList<Imagen> getContenedorInicial() {
+        return contenedorInicial;
     }
 }

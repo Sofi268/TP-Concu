@@ -16,7 +16,7 @@ public class Imagen {
      *  se definen los valores por defecto al crear una instancia/objeto de la clase.
      */
     public Imagen() {   //valores Default.
-        this.nombre = "";
+        this.nombre = "Imagen";
         this.iluminacionOriginal = true;
         this.tamanioOriginal = true;
         improvement =new ArrayList<>();
