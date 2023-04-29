@@ -24,10 +24,10 @@ public class Main {
         ContenedorFinal cf = new ContenedorFinal();
         //creacion de procesos.
         Estadistico log = new Estadistico();
-        Cargar carga = new Cargar(tiempo);    //Proceso 1:cargar las imagenes.
-        Mejorar mejora = new Mejorar(tiempo); //Proceso 2:Mejorar iluminacion de las imagenes.
-        Ajustar ajuste = new Ajustar(tiempo); //Proceso 3:Ajustar el tamaño de las imagenes.
-        CargarCopia cargaCopia = new CargarCopia(tiempo); //Proceso 4:CargarCopia de las imagenes.
+        Cargar carga = new Cargar(tiempo,ci);    //Proceso 1:cargar las imagenes.
+        Mejorar mejora = new Mejorar(tiempo,ci); //Proceso 2:Mejorar iluminacion de las imagenes.
+        Ajustar ajuste = new Ajustar(tiempo,ci); //Proceso 3:Ajustar el tamaño de las imagenes.
+        CargarCopia cargaCopia = new CargarCopia(tiempo,ci,cf); //Proceso 4:CargarCopia de las imagenes.
 
         //Creacion de Hilos. nota: modificar parametros a demanda.
         Thread hilo0 = new Thread();  hilos[0]=hilo0 ; //Estadistico.
