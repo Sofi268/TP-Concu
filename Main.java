@@ -2,17 +2,23 @@
  * Clase Principal del programa: Se manejan los hilos en ejecucion.
  */
 public class Main {
-    private static long tiempo;
     /**
-     * constructor
+     * constructor de clase principal
      * @param args
      */
     public static void main(String[] args) {
         Thread hilos[] = new Thread[11]; //Arreglo para 11 hilos
         //clases comunes:
-        tiempo = 12000;  //setamos cuanto tiempo queremos que dure el proceso.en milisegundos (ms)
+        long tiempo = 10 * 1000  ;  //(ms) setamos cuanto tiempo queremos que dure el proceso.
         Testeo prueba = new Testeo(tiempo);  //para comenzar con las pruebas.
-        prueba.test_Cargar();
+        
+        //DES-COMENTAR METODO PARA PROBAR PROCESO ELEGIDO.
+        //for(int i=0;i<20;i++){  //para repetir 20 veces las pruebas.
+        prueba.test_Cargar();//}
+        //prueba.test_Mejorar();
+        //prueba.test_Ajustar();
+        //prueba.test_CargarCopia();
+        
 
         ContenedorInicial ci = new ContenedorInicial();  //donde se cargaran las imagenes.
         ContenedorFinal cf = new ContenedorFinal();
