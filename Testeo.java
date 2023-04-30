@@ -194,7 +194,7 @@ public class Testeo {
         }catch (IndexOutOfBoundsException e){ control = 0;}
         if(control == 100){ System.out.printf("|->Las I copiadas tienen M.I. y A.T: True \n"); }else{System.out.printf("|->Las I copiadas tienen M.I. y A.T:  False \n"); paso = false;}
         //paso todos los test:
-        if(paso){ System.out.printf("--> TRUE <-- Paso el Test de Cargar \n"); }else{ System.out.printf("--> FALSE <-- NO paso el Test de Mejorar \n");}
+        if(paso){ System.out.printf("--> TRUE <-- Paso el Test de CargarCopia \n"); }else{ System.out.printf("--> FALSE <-- NO paso el Test de Mejorar \n");}
         System.out.println("------------------------------------");
     }
 
