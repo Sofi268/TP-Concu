@@ -19,7 +19,7 @@ public class Cargar implements Runnable{
      * @param ci Donde se guardara el objeto de ContenedorInicial.
      */
     public Cargar(long tiempo,ContenedorInicial ci,int cantidad_de_hilos) {
-        this.tiempo = (tiempo*cantidad_de_hilos)/(100*1); //(tiempo * hilos )/( 100 * actividades_sobre_cada_imagen )
+        this.tiempo = (tiempo*cantidad_de_hilos)/(100); //(tiempo * hilos )/( 100 * actividades_sobre_cada_imagen )
         listo = false;
         imagenesCargadas = 0;
         this.ci = ci;

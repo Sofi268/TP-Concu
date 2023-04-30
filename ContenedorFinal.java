@@ -9,7 +9,6 @@ public class ContenedorFinal {
     private ArrayList<Imagen> contenedorFinal;
     /**
      * Constructor de la clase ContenedorFinal.
-     * @param contenedorInicial
      */
     public ContenedorFinal() {
         contenedorFinal = new ArrayList<>(100);

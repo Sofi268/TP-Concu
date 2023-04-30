@@ -9,7 +9,7 @@ public class Mejorar implements Runnable{
     private int imagenesMejoradas;
     private ContenedorInicial ci;
     public Mejorar(long tiempo, ContenedorInicial ci,int cantidad_de_hilos) {
-        this.tiempo = (tiempo*cantidad_de_hilos)/(100 * 1); //(tiempo * hilos )/( 100 * actividades_sobre_cada_imagen )
+        this.tiempo = (tiempo*cantidad_de_hilos)/(100); //(tiempo * hilos )/( 100 * actividades_sobre_cada_imagen )
         listo = false;
         imagenesMejoradas = 0;
         this.ci = ci;
