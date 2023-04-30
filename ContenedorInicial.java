@@ -19,14 +19,11 @@ public class ContenedorInicial {
     //  EJ: para que 2 hilo no quieran Mejorar iluminacion de una imagen al mismo tiempo, ya que se obtuvieron datos desincronizados de la imagen.
 
     /**
-     * #nota: 1)cambiar nombre carga a gusto.
-     *        2)completar param y return.
      * Agrega un elemento a la lista.
-     * @param imagen a agregar
-     * @return
+     * @param Im : imagen que se desea agregar al contenedor inicial.
      */
-    public void carga() {
-       //implementar codigo jeje.
+    public synchronized void carga(Imagen Im) {
+        contenedorInicial.add(Im);
     }
 
     /**

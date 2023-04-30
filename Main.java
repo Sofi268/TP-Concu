@@ -2,26 +2,30 @@
  * Clase Principal del programa: Se manejan los hilos en ejecucion.
  */
 public class Main {
-    private static long tiempo;
     /**
      * constructor
      * @param args
      */
     public static void main(String[] args) {
         Thread hilos[] = new Thread[11]; //Arreglo para 11 hilos
-        //clases comunes:
-        tiempo = 12000;  //setamos cuanto tiempo queremos que dure el proceso.en milisegundos (ms)
+        //classes comunes:
+        long tiempo = 10 * 1000  ;  //(ms) setamos cuanto tiempo queremos que dure el proceso.
         Testeo prueba = new Testeo(tiempo);  //para comenzar con las pruebas.
-        prueba.test_Cargar();
+        //DES-COMENTAR METODO PARA PROBAR PROCESO ELEGIDO. parametro: cantidad de hilos que deseo que carguen las imagenes.
+        //for(int i=0;i<20;i++){  //para repetir 20 veces las pruebas.
+        prueba.test_Cargar(2);    //}
+        prueba.test_Mejorar(3);    //}
+        prueba.test_Ajustar(3);    //}
+        prueba.test_CargarCopia(2);    //}
 
         ContenedorInicial ci = new ContenedorInicial();  //donde se cargaran las imagenes.
         ContenedorFinal cf = new ContenedorFinal();
         //creacion de procesos.
         Estadistico log = new Estadistico();
-        Cargar carga = new Cargar(tiempo);    //Proceso 1:cargar las imagenes.
-        Mejorar mejora = new Mejorar(tiempo); //Proceso 2:Mejorar iluminacion de las imagenes.
-        Ajustar ajuste = new Ajustar(tiempo); //Proceso 3:Ajustar el tamaño de las imagenes.
-        CargarCopia cargaCopia = new CargarCopia(tiempo); //Proceso 4:CargarCopia de las imagenes.
+        Cargar carga = new Cargar(tiempo,ci,2);    //Proceso 1:cargar las imagenes.
+        Mejorar mejora = new Mejorar(tiempo,ci,3); //Proceso 2:Mejorar iluminacion de las imagenes.
+        Ajustar ajuste = new Ajustar(tiempo,ci,3); //Proceso 3:Ajustar el tamaño de las imagenes.
+        CargarCopia cargaCopia = new CargarCopia(tiempo,ci,cf,2); //Proceso 4:CargarCopia de las imagenes.
 
         //Creacion de Hilos. nota: modificar parametros a demanda.
         Thread hilo0 = new Thread();  hilos[0]=hilo0 ; //Estadistico.
@@ -36,6 +40,7 @@ public class Main {
         Thread hilo9 = new Thread();  hilos[9]=hilo9;   //P4:Copiar.
         Thread hilo10 = new Thread(); hilos[10]=hilo10; //P4:Copiar.
 
+        long startTimeMain = System.currentTimeMillis();
         for (int i=0;i<10;i++){ //iniciamos los hilos.
             hilos[i].start();
         }
@@ -45,6 +50,8 @@ public class Main {
                 hilos[i].join();
             }
         }catch(InterruptedException e){ throw new RuntimeException(e);}
-
+        long endTimeMain = System.currentTimeMillis();
+        long t = endTimeMain - startTimeMain; //tiempo en miliSegundos.
+        //prueba.test_COMPLETO();
     }
 }
