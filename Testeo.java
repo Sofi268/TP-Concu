@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import java.util.ArrayList;
 
+=======
+>>>>>>> 24be326812d4de6bdaea534223a5b72898eccc15
 /**
  * CLase testeo se encarga de hacer pruebas unitarias a cada proceso del sistema.
  * para verificar que los procesos se efectuan correctamente. y en el tiempo establecido.
@@ -19,6 +22,7 @@ public class Testeo {
     /**
      * Testeo del proceso 1, de cargar imagenes a un contenedor incial.
      */
+<<<<<<< HEAD
     public void test_Cargar(int cantidad_de_hilos){
         boolean paso = true;
         long startTime = System.currentTimeMillis();
@@ -37,6 +41,19 @@ public class Testeo {
             hilos[i].start();
         }
 
+=======
+    public void test_Cargar(){
+        boolean paso = true;
+        long startTime = System.currentTimeMillis();
+        System.out.printf("Test_carga: \n");
+
+        ContenedorInicial ci = new ContenedorInicial();
+        Cargar c = new Cargar(tiempo,ci);
+        Thread hiloA = new Thread(c);
+        Thread hiloB = new Thread(c);
+        hiloA.start();
+        hiloB.start();
+>>>>>>> 24be326812d4de6bdaea534223a5b72898eccc15
         try{
             for(int i=0;i<cantidad_hilos;i++){ //paramos el codigo hasta que se termine de ejecutar todos los procesos.
                 hilos[i].join();
@@ -47,16 +64,24 @@ public class Testeo {
         long t = endTime - startTime; //tiempo en miliSegundos.
 
         if( (t >= tiempo) && ( t <= (tiempo+1000)) ){ System.out.printf("|->Tiempo: (%dms) - True\n",t);}else{ System.out.printf("|-> tiempo: (%dms) - False \n",t); paso = false; }     //tiempo del proceso.1 min de mas de
+<<<<<<< HEAD
         if(c.getImagenesCargadas() == 100){ System.out.printf("|->Imagenes Cargadas: True \n"); }else{ System.out.printf("|->Imagenes Cargadas: False \n"); paso = false; }  //Imagenes cargadas entre los hilos.
         if(ci.getContenedorInicial().size() == 100 ){ System.out.printf("|->Cantidad correcta en el contenedor : True \n");}else{System.out.printf("|->Cantidad correcta en el contenedor : False \n"); paso = false;}  //si existen 100 imagenes cargadas en el contendor
         if( imagenes_sin_repetir(ci) == 100 ){ System.out.printf("|->No se repiten los nombres: true \n"); }else{System.out.printf("|->No se repiten los nombres: False \n");paso = false; } //si los nombre no se repiten
         if(paso){ System.out.printf("--> TRUE <-- Paso el Test de la carga \n"); }else{ System.out.printf("--> FALSE <-- NO paso el Test de la carga\n");}
+=======
+        if(c.getImagenesCargadas() == 100){ System.out.printf("|->Imagenes Cargadas: True \n"); }else{ System.out.printf("|->ImagenesCargadas: False \n"); paso = false; }  //Imagenes cargadas entre los hilos.
+        if(ci.getContenedorInicial().size() == 100 ){ System.out.printf("|->Cantidad correcta en el contenedor : True \n");}else{System.out.printf("|->Cantidad correcta en el contenedor : False \n"); paso = false;}  //si existen 100 imagenes cargadas en el contendor
+        if( imagenes_sin_repetir(ci) == 100 ){ System.out.printf("|->No se repiten los nombres: true \n"); }else{System.out.printf("|->No se repiten los nombres: False \n");paso = false; } //si los nombre no se repiten
+        if(paso){ System.out.printf("--> TRUE <-- Paso el Test de la carga \n"); }else{ System.out.printf("--> FALSE <-- NO paso el Test de la carga\n");paso = false;}
+>>>>>>> 24be326812d4de6bdaea534223a5b72898eccc15
         System.out.println("------------------------------------");
     }
 
     /**
      * Testeo del proceso 2, Mejorar iluminacion a imagenes de un contenedor incial.
      */
+<<<<<<< HEAD
     public void test_Mejorar(int cantidad_de_hilos){
         boolean paso = true;
         long startTime = System.currentTimeMillis();
@@ -104,11 +129,16 @@ public class Testeo {
         //paso todos los test:
         if(paso){ System.out.printf("--> TRUE <-- Paso el Test de Mejorar \n"); }else{ System.out.printf("--> FALSE <-- NO paso el Test de Mejorar \n");}
         System.out.println("------------------------------------");
+=======
+    public void test_Mejorar(){
+
+>>>>>>> 24be326812d4de6bdaea534223a5b72898eccc15
     }
 
     /**
      * Testeo del proceso 3, Ajustar tamaño de imagenes de un contenedor incial.
      */
+<<<<<<< HEAD
     public void test_Ajustar(int cantidad_de_hilos){
         boolean paso = true;
         long startTime = System.currentTimeMillis();
@@ -218,6 +248,34 @@ public class Testeo {
                 }
             }
         }
+=======
+    public void test_Ajustar(){
+
+    }
+
+    /**
+     * Testeo del proceso 4, CargarCopia de las imagenes desde el contenedor inicial, al contenedor final.
+     */
+    public void test_CargarCopia(){
+        System.out.println("------------------------------------");
+    }
+    //-------------------------------------------------------------------------------------------------------------------------
+    //metodos comunes de uso.
+    /**
+     *
+     * @param ci
+     * @return numero de imagenes que estan una sola vez.
+     */
+    public int imagenes_sin_repetir(ContenedorInicial ci){
+        int imagenSinRepetir = 0;
+        for(Imagen aux1 : ci.getContenedorInicial()){
+            for(Imagen aux2 : ci.getContenedorInicial()){
+                if( aux1.getNombre().equals(aux2.getNombre())){  //true: son iguales los nombres
+                    imagenSinRepetir ++;
+                }
+            }
+        }
+>>>>>>> 24be326812d4de6bdaea534223a5b72898eccc15
         return imagenSinRepetir;
     }
 }

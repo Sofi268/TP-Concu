@@ -11,15 +11,24 @@ public class Cargar implements Runnable{
     private int imagenesCargadas;
     private int limite; //setea el limite de imagenes que se desean procesar.
     private ContenedorInicial ci;
+<<<<<<< HEAD
 
 
+=======
+    
+>>>>>>> 24be326812d4de6bdaea534223a5b72898eccc15
     /**
      * constructor del Proceso 1 de carga.
      * @param tiempo tiempo en ms que debe durar el proceso.
      * @param ci Donde se guardara el objeto de ContenedorInicial.
      */
+<<<<<<< HEAD
     public Cargar(long tiempo,ContenedorInicial ci,int cantidad_de_hilos) {
         this.tiempo = (tiempo*cantidad_de_hilos)/(100*1); //(tiempo * hilos )/( 100 * actividades_sobre_cada_imagen )
+=======
+    public Cargar(long tiempo,ContenedorInicial ci) {
+        this.tiempo = (tiempo*2)/(100); //(tiempo * hilos )/( 100 * actividades_sobre_cada_imagen )
+>>>>>>> 24be326812d4de6bdaea534223a5b72898eccc15
         listo = false;
         imagenesCargadas = 0;
         this.ci = ci;
@@ -76,4 +85,5 @@ public class Cargar implements Runnable{
     public int getImagenesCargadas() {
         return imagenesCargadas;
     }
+   
 }
