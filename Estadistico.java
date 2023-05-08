@@ -3,7 +3,6 @@
  * Lleva la cuenta de cuantas imagenes se encuentran en cada proceso.
  */
 public class Estadistico implements Runnable{
-    private ContenedorFinal cf;
     private boolean listo;
     private Thread hilos[] = new Thread[10];
     private int cantidadDeMuestras;
