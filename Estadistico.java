@@ -1,3 +1,4 @@
+
 /**
  * Lleva la cuenta de cuantas imagenes se encuentran en cada proceso.
  */
@@ -7,8 +8,7 @@ public class Estadistico implements Runnable{
     private Thread hilos[] = new Thread[10];
     private int cantidadDeMuestras;
     private int imagenesCargadas, imagenesMejoradas1,imagenesMejoradas2,imagenesMejoradas3, imagenesAjustadas,imagenesCopiadas;
-    public Estadistico(ContenedorFinal cf,Thread hilos[]){
-        this.cf = cf;
+    public Estadistico(Thread hilos[]){
         listo = false;
         for(int i=0;i<10;i++){
             this.hilos[i] = hilos[i];
@@ -34,7 +34,7 @@ public class Estadistico implements Runnable{
                 }
                 imprimir(pw);
                 cantidadDeMuestras ++;
-                if (cf.getImagenesCopiadas() == 100) {
+                if (imagenesCopiadas == 100) {
                     listo = true;
                 }
             }
@@ -48,8 +48,7 @@ public class Estadistico implements Runnable{
         pw.printf("P4-Cantidad de imagenes insertadas en el contenedor: %s\n",imagenesCopiadas);
         for(int i=0;i<10;i++){
             pw.printf("Estado %s : %s \n",hilos[i].getName(),hilos[i].getState());
-//          System.out.printf("Cantidad de muestras: %d ",cantidadDeMuestras);
         }
     }
-
+    //         System.out.printf("Cantidad de muestras: %d ",cantidadDeMuestras);
 }
