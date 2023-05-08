@@ -1,0 +1,360 @@
+************** Inicio del registro: Mon May 08 17:40:50 ART 2023 ********* ------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 6
+P2-Cantidad de imagenes mejoradas completamente: 6
+P3-cantidad de imagenes ajustadas: 5
+P4-Cantidad de imagenes copiadas al contenedor final: 5
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : RUNNABLE 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 12
+P2-Cantidad de imagenes mejoradas completamente: 10
+P3-cantidad de imagenes ajustadas: 10
+P4-Cantidad de imagenes copiadas al contenedor final: 10
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : RUNNABLE 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 16
+P2-Cantidad de imagenes mejoradas completamente: 14
+P3-cantidad de imagenes ajustadas: 14
+P4-Cantidad de imagenes copiadas al contenedor final: 14
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 22
+P2-Cantidad de imagenes mejoradas completamente: 20
+P3-cantidad de imagenes ajustadas: 19
+P4-Cantidad de imagenes copiadas al contenedor final: 19
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 26
+P2-Cantidad de imagenes mejoradas completamente: 23
+P3-cantidad de imagenes ajustadas: 23
+P4-Cantidad de imagenes copiadas al contenedor final: 23
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : RUNNABLE 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 32
+P2-Cantidad de imagenes mejoradas completamente: 29
+P3-cantidad de imagenes ajustadas: 27
+P4-Cantidad de imagenes copiadas al contenedor final: 27
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 36
+P2-Cantidad de imagenes mejoradas completamente: 33
+P3-cantidad de imagenes ajustadas: 32
+P4-Cantidad de imagenes copiadas al contenedor final: 32
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 42
+P2-Cantidad de imagenes mejoradas completamente: 36
+P3-cantidad de imagenes ajustadas: 36
+P4-Cantidad de imagenes copiadas al contenedor final: 36
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : BLOCKED 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : RUNNABLE 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 46
+P2-Cantidad de imagenes mejoradas completamente: 43
+P3-cantidad de imagenes ajustadas: 41
+P4-Cantidad de imagenes copiadas al contenedor final: 41
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 52
+P2-Cantidad de imagenes mejoradas completamente: 45
+P3-cantidad de imagenes ajustadas: 45
+P4-Cantidad de imagenes copiadas al contenedor final: 45
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : RUNNABLE 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 56
+P2-Cantidad de imagenes mejoradas completamente: 50
+P3-cantidad de imagenes ajustadas: 49
+P4-Cantidad de imagenes copiadas al contenedor final: 49
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 62
+P2-Cantidad de imagenes mejoradas completamente: 56
+P3-cantidad de imagenes ajustadas: 55
+P4-Cantidad de imagenes copiadas al contenedor final: 54
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 66
+P2-Cantidad de imagenes mejoradas completamente: 60
+P3-cantidad de imagenes ajustadas: 60
+P4-Cantidad de imagenes copiadas al contenedor final: 59
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 72
+P2-Cantidad de imagenes mejoradas completamente: 65
+P3-cantidad de imagenes ajustadas: 64
+P4-Cantidad de imagenes copiadas al contenedor final: 64
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 76
+P2-Cantidad de imagenes mejoradas completamente: 68
+P3-cantidad de imagenes ajustadas: 68
+P4-Cantidad de imagenes copiadas al contenedor final: 68
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : RUNNABLE 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 82
+P2-Cantidad de imagenes mejoradas completamente: 72
+P3-cantidad de imagenes ajustadas: 72
+P4-Cantidad de imagenes copiadas al contenedor final: 71
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 86
+P2-Cantidad de imagenes mejoradas completamente: 77
+P3-cantidad de imagenes ajustadas: 75
+P4-Cantidad de imagenes copiadas al contenedor final: 75
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 92
+P2-Cantidad de imagenes mejoradas completamente: 81
+P3-cantidad de imagenes ajustadas: 81
+P4-Cantidad de imagenes copiadas al contenedor final: 81
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 96
+P2-Cantidad de imagenes mejoradas completamente: 87
+P3-cantidad de imagenes ajustadas: 86
+P4-Cantidad de imagenes copiadas al contenedor final: 85
+Estado Thread-0 : TIMED_WAITING 
+Estado Thread-1 : TIMED_WAITING 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 100
+P2-Cantidad de imagenes mejoradas completamente: 89
+P3-cantidad de imagenes ajustadas: 89
+P4-Cantidad de imagenes copiadas al contenedor final: 89
+Estado Thread-0 : TERMINATED 
+Estado Thread-1 : TERMINATED 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : RUNNABLE 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 100
+P2-Cantidad de imagenes mejoradas completamente: 100
+P3-cantidad de imagenes ajustadas: 93
+P4-Cantidad de imagenes copiadas al contenedor final: 93
+Estado Thread-0 : TERMINATED 
+Estado Thread-1 : TERMINATED 
+Estado Thread-2 : TIMED_WAITING 
+Estado Thread-3 : TIMED_WAITING 
+Estado Thread-4 : TIMED_WAITING 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 100
+P2-Cantidad de imagenes mejoradas completamente: 100
+P3-cantidad de imagenes ajustadas: 99
+P4-Cantidad de imagenes copiadas al contenedor final: 98
+Estado Thread-0 : TERMINATED 
+Estado Thread-1 : TERMINATED 
+Estado Thread-2 : TERMINATED 
+Estado Thread-3 : TERMINATED 
+Estado Thread-4 : TERMINATED 
+Estado Thread-5 : TIMED_WAITING 
+Estado Thread-6 : TIMED_WAITING 
+Estado Thread-7 : TIMED_WAITING 
+Estado Thread-8 : TIMED_WAITING 
+Estado Thread-9 : TIMED_WAITING 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 100
+P2-Cantidad de imagenes mejoradas completamente: 100
+P3-cantidad de imagenes ajustadas: 100
+P4-Cantidad de imagenes copiadas al contenedor final: 100
+Estado Thread-0 : TERMINATED 
+Estado Thread-1 : TERMINATED 
+Estado Thread-2 : TERMINATED 
+Estado Thread-3 : TERMINATED 
+Estado Thread-4 : TERMINATED 
+Estado Thread-5 : TERMINATED 
+Estado Thread-6 : TERMINATED 
+Estado Thread-7 : TERMINATED 
+Estado Thread-8 : TERMINATED 
+Estado Thread-9 : TERMINATED 
+------------------------------------------------------------------------
+P1-Cantidad de imagenes insertadas en el contenedor incial: 100
+P2-Cantidad de imagenes mejoradas completamente: 100
+P3-cantidad de imagenes ajustadas: 100
+P4-Cantidad de imagenes copiadas al contenedor final: 100
+Estado Thread-0 : TERMINATED 
+Estado Thread-1 : TERMINATED 
+Estado Thread-2 : TERMINATED 
+Estado Thread-3 : TERMINATED 
+Estado Thread-4 : TERMINATED 
+Estado Thread-5 : TERMINATED 
+Estado Thread-6 : TERMINATED 
+Estado Thread-7 : TERMINATED 
+Estado Thread-8 : TERMINATED 
+Estado Thread-9 : TERMINATED 
