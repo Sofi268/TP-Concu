@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Random;
 /**
  * ContenedorInicial: Administra el uso sincronico de la Lista contenedorInicial.
  * Para Leer y escribir los cambios que se les haga a los elementos de la lista.
@@ -7,7 +7,6 @@ import java.util.ArrayList;
  */
 public class ContenedorInicial {
     private ArrayList<Imagen> contenedorInicial;
-
     /**
      * Constructor de la clase ContenedorInicial.
      */
@@ -26,36 +25,53 @@ public class ContenedorInicial {
         contenedorInicial.add(Im);
     }
 
-    /**
-     * #nota: 1)cambiar nombre Proceso_2 a gusto.
-     *        2)completar param y return.
-     *  Marcar como mejorada directamente la imagen. o borrar en caso de no usarse.
-     * @param
-     * @return
-     */
-    public synchronized void mejora() {
-        //implementar codigo jeje.
+    public synchronized int mejora() {
+        Random rand = new Random();
+        try {
+            int indice = rand.nextInt(contenedorInicial.size());
+            String name_hilo = Thread.currentThread().getName();
+            if (contenedorInicial.get(indice).isIluminacionOriginal() && !contenedorInicial.get(indice).getImprovement().contains(name_hilo)) { //que no este mejorada, y que no haya sido mejorada por este hilo.
+                contenedorInicial.get(indice).setImprovement(name_hilo); //agregamos a la lista de hilos que tocaron la imagen.hilos 3y4y5
+                if (contenedorInicial.get(indice).getImprovement().size() == 4) { //se completo la cantidad de mejoras.
+                    contenedorInicial.get(indice).setIluminacionOriginal(false);
+                    return 2; //se termino de mejorar una imagen.
+                }
+                return 1; //se mejoro una imagen.
+            }
+        }catch (IllegalArgumentException e){}
+        return 0;
+    }
+
+    public synchronized boolean ajuste() {
+        Random rand = new Random();
+        try {
+            int indice = rand.nextInt(contenedorInicial.size());
+            String name_hilo = Thread.currentThread().getName();
+            if (!contenedorInicial.get(indice).isIluminacionOriginal() && contenedorInicial.get(indice).isTamanioOriginal()) { //que si este mejorada y que no este ajustada.
+                contenedorInicial.get(indice).setImprovement(name_hilo); //agregamos a la lista de hilos que tocaron la imagen. hilo 6o7o8
+                contenedorInicial.get(indice).setTamanioOriginal(false);
+                return true; //se termino de Ajustar una imagen.
+            }
+        }catch (IllegalArgumentException e){}
+        return false;
     }
 
     /**
-     * #nota: 1)cambiar nombre Proceso_3 a gusto.
-     *        2)completar param y return. o borrar en caso de no usarse.
-     * Marcar directamente como ajustada la imagen.
-     * @param
-     * @return
-     */
-    public synchronized void ajuste() {
-        //implementar codigo jeje.
-    }
-
-    /**
-     * #nota: 1)cambiar nombre "borrar" a gusto.
-     *        2)completar param y return.
-     * Aqui solo se elimina de la lista.
+     * Aqui solo se elimina de la lista y se retorna la imagen a copiar
      * @return imagen a copiar.
      */
     public synchronized Imagen borrar() {
-        //implementar codigo jeje.
+        Random rand = new Random();
+        try {
+            int indice = rand.nextInt(contenedorInicial.size());
+            String name_hilo = Thread.currentThread().getName();
+            if (!contenedorInicial.get(indice).isIluminacionOriginal() && !contenedorInicial.get(indice).isTamanioOriginal()) { //que si este mejorada y que esta ajustada.
+                contenedorInicial.get(indice).setImprovement(name_hilo); //agregamos a la lista de hilos que tocaron la imagen. hilo 9o10
+                Imagen aux = contenedorInicial.get(indice);
+                contenedorInicial.remove(indice);
+                return aux; //retorno la imagen lista.
+            }
+        }catch (IllegalArgumentException e){}
         return null;
     }
 
@@ -75,7 +91,7 @@ public class ContenedorInicial {
  *   1) NO colocar tiempos en esta clase, los tiempos van es sus respectivos procesos.
  *   2) Busqueda aleatoria: se crea el rand en el bloque sincronizado de set.
  *           el rango establecido sera la cantidad de elementos que contenga la lista en ese momento.
- *           EJ: rand.nextInt(getContenedorInicial().size()-1);  //genera un n random del 0 a la cantidad de elementos. el -1: por la diferencia entre el indice de la lista que comienza en 0.
+ *           EJ: rand.nextInt(getContenedorInicial().size());  //genera un n random del 0 a la cantidad de elementos.
  *   3) Reformular la parde Doc a gusto del Programador.
  *   4) tiempo: Cada proceso se encargara de administrar con ese tiempo, cuanto deberan tardar cada Accion.formula: (tiempo * hilos )/( 100 * actividades_sobre_cada_imagen )
  *  */

@@ -41,17 +41,14 @@ public class Cargar implements Runnable{
             if(indice != -1){  //true: se puede agregar una imagen.
                 Imagen ImAux = new Imagen(); //creamos una nueva imagen.
                 ImAux.setNombre(ImAux.getNombre()+(indice+1)); //modificamos el nombre
+                ImAux.setImprovement(Thread.currentThread().getName());
                 ci.carga(ImAux);
-                try {
-                    TimeUnit.MILLISECONDS.sleep(tiempo);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                try { TimeUnit.MILLISECONDS.sleep(tiempo);
+                } catch (InterruptedException e) { throw new RuntimeException(e); }
             }else{  //false: no se pueden agregar mas imagenes.
                 listo = true;
             }
         }
-        //System.out.printf(" %s : %d imagenes\n",Thread.currentThread().getName(),getImagenesCargadas());
     }
 
     /**

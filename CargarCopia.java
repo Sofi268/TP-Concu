@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit;
+
 /**
  * CargarCopia: Proceso encargado de copiar la imagen en el contenedor final
  *      y de eliminarla en el contenedor inicial de manera sincronizada.
@@ -18,7 +20,22 @@ public class CargarCopia implements Runnable{
     }
     @Override
     public void run() {
-
+        while(!listo){
+            Imagen respuesta = null;
+            //probar copia.
+            synchronized (this){
+                if(getImagenesCopiadas()<100){
+                    respuesta = ci.borrar();
+                    if(respuesta != null){
+                        cf.copiar(respuesta);
+                        imagenesCopiadas++;
+                    }
+                }else{ listo = true;}
+            }
+            if (respuesta != null) {
+                try { TimeUnit.MILLISECONDS.sleep(tiempo);}catch(InterruptedException e) { throw new RuntimeException(e); }
+            }
+        }
     }
 
     public int getImagenesCopiadas() {

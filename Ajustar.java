@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit;
+
 /**
  * Ajustar: Proceso encargado de ajustar el tamaño de la imagen de manera sincronizada
  * hilos que ejecutan: hilo 6/7/8
@@ -15,36 +17,24 @@ public class Ajustar implements Runnable{
         imagenesAjustadas = 0;
         this.ci = ci;
     }
-
     @Override
     public void run() {
-
-    }
-/*
-    @Override
-    public void run() {
-        Random rand = new Random();
-        int indiceImagenaleatoria = rand.nextInt(c.lenght);// de forma aleatoria elijo un indice
-        String imagenAleatoria = c[indiceImagenaleatoria];  // busco la imagen en ese indice
-        while(listo == false){ && //que esa imagen no este ajustada ){
-                ajustar(5,2);
+        while(!listo) {
+            boolean respuesta=false;
+            //probar Ajustar
+            synchronized (this) {
+                if (getImagenesAjustadas() < 100) { //si se puede seguir mejorando imagenes.
+                    respuesta = ci.ajuste();
+                    if(respuesta){ imagenesAjustadas++; }
+                } else {
+                    listo = true; //para que salga del while.termino su trabajo.
+                }
+            }
+            if (respuesta) { //si se encontro una imagen para Ajustar.
+                try { TimeUnit.MILLISECONDS.sleep(tiempo);}catch(InterruptedException e) { throw new RuntimeException(e); }
+            }
         }
     }
-}
-    public void setListo(int i){
-        if(i == 100){
-            listo = true;
-        }
-    }
-
-    public void ajustar(int l, int a)
-    {
-        imagenesAjustadas ++;
-        System.out.println("Imagen Ajustada: " + s); //dudas
-        c.ajuste(l,a); // esta en contenedor inicial no se si se implementa ahi o que
-        setListo(imagenesAjustadas); //me fijo si son 100 o que
-    }*/
-
     public int getImagenesAjustadas() {
         return imagenesAjustadas;
     }

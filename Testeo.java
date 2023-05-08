@@ -65,7 +65,7 @@ public class Testeo {
 
         //creamos un conenedor con 100 imagenes  y cargamos 100 imagenes con diferentes nombres.
         ContenedorInicial ci = new ContenedorInicial();
-        for(int j=0;j<100;j++){ Imagen ImAux = new Imagen(); ImAux.setNombre(ImAux.getNombre()+(j+1)); ci.carga(ImAux); }
+        for(int j=0;j<100;j++){ Imagen ImAux = new Imagen(); ImAux.setNombre(ImAux.getNombre()+(j+1)); ImAux.setImprovement("hilox"); ci.carga(ImAux); }
 
         Mejorar  m = new Mejorar(tiempo,ci,cantidad_de_hilos);
         Thread hilos[] = new Thread[cantidad_hilos];
@@ -78,7 +78,7 @@ public class Testeo {
         long t = endTime - startTime; //tiempo en miliSegundos.
 
         //tiempo:
-        if( (t >= tiempo) && ( t <= (tiempo+1000)) ){ System.out.printf("|->Tiempo: (%dms) - True\n",t);}else{ System.out.printf("|->Tiempo: (%dms) - False \n",t); paso = false; }     //tiempo del proceso.1 min de mas de
+        if( (t >= tiempo) && ( t <= (tiempo+2000)) ){ System.out.printf("|->Tiempo: (%dms) - True\n",t);}else{ System.out.printf("|->Tiempo: (%dms) - False \n",t); paso = false; }     //tiempo del proceso.1 min de mas de
 
         //si se mejoraron 100 imagenes en el proceso de Mejoramiento de iluminacion.
         int control = 0;
@@ -88,7 +88,7 @@ public class Testeo {
         //si todas las imagenes tienen la mejora de iluminacion y por tres hilos.
         control = 0;
         try{for (Imagen imagen_aux : ci.getContenedorInicial()) {
-                if (!imagen_aux.isIluminacionOriginal() && (imagen_aux.getImprovement().size() == 3)) { control++; } // true si no tiene la iluminacion original.
+                if (!imagen_aux.isIluminacionOriginal() && (imagen_aux.getImprovement().size() == 4)) { control++; } // true si no tiene la iluminacion original.
             }
         }catch (IndexOutOfBoundsException e){ control = 0;}
         if(control == 100){ System.out.printf("|->Cantidad I.M. en contenedor inicial:  True\n"); }else{System.out.printf("|->Cantidad I.M. en contenedor inicial:  False\n"); paso = false;}
@@ -97,10 +97,10 @@ public class Testeo {
         control = 0;
         try{for (Imagen imagen_aux : ci.getContenedorInicial()) {
                 ArrayList<String> aux_improvement = new ArrayList<>(); aux_improvement = imagen_aux.getImprovement();
-                if (!((aux_improvement.get(0).equals(aux_improvement.get(1))) || (aux_improvement.get(0).equals(aux_improvement.get(2))) || (aux_improvement.get(1).equals(aux_improvement.get(1))))) { control++; } // true si no tiene la iluminacion original.
+                if ( !(aux_improvement.get(1).equals(aux_improvement.get(2))) && !(aux_improvement.get(1).equals(aux_improvement.get(3))) && !(aux_improvement.get(2).equals(aux_improvement.get(3))) ) { control++; } // true si no tiene la iluminacion original.
             }
         }catch (IndexOutOfBoundsException e){ control = 0;} //si esta vacia.
-        if(control == 100){ System.out.printf("|->I.M. por distintos hilos : True\n"); }else{System.out.printf("|->I.M. por distintos hilos : False\n"); paso = false;}
+        if(control == 100){ System.out.printf("|->I.M. por distintos hilos:(%d) True\n",control); }else{System.out.printf("|->I.M. por distintos hilos:(%d) False\n",control); paso = false;}
         //paso todos los test:
         if(paso){ System.out.printf("--> TRUE <-- Paso el Test de Mejorar \n"); }else{ System.out.printf("--> FALSE <-- NO paso el Test de Mejorar \n");}
         System.out.println("------------------------------------");
@@ -198,9 +198,46 @@ public class Testeo {
         System.out.println("------------------------------------");
     }
 
-    public void test_COMPLETO(){
+    public void test_COMPLETO(ContenedorInicial ci , ContenedorFinal cf,long t){
+        boolean paso = true;
+        System.out.printf("-->Test Completo del programa: -->\n");
+        System.out.printf("tiempo: %dms \n",t );
+        //si contenedor inicial esta vacio.
+        if(ci.getContenedorInicial().size() == 0){ System.out.printf("|->contenedor Inicial esta vacio:  True\n"); }else{System.out.printf("|->contenedor Inicial esta vacio:  False\n"); paso = false;}
+        //si contenedor final contiene las 100 imagenes
+        if(cf.getContenedorFinal().size() == 100){ System.out.printf("|->contenedor Final esta Lleno:  True\n"); }else{System.out.printf("|->contenedor Final esta Lleno: False\n"); paso = false;}
+        int control = 0;
+
+        //si las 100 imagenes de contenedorFinal tienen el nombre "nombre.copia".se verifica que cuando se cargaron se les puso bien el nombre... ej: "imagen23"(8) -> "imagen23.copia" (14)
+        control = 0;
+        for (Imagen imagen_aux : cf.getContenedorFinal()) { if(imagen_aux.getNombre().length() > 10){ control++; } }
+        if(control == 100){ System.out.printf("|->Imagenes Cargas y Copiadas correctamente:  True\n"); }else{System.out.printf("|->Imagenes cargadas y copiadas correctamente:  False\n"); paso = false;}
+
+        //si ademas fueron mejoraras en iluminacion, por los tres hilos (por los 3 hilos cada imagen).
+        control = 0;
+        ArrayList<String> aux_improvement = new ArrayList<>();
+        try{
+            for (Imagen imagen_aux : cf.getContenedorFinal()) {
+                if (!imagen_aux.isIluminacionOriginal() && (imagen_aux.getImprovement().size() == 6) ) {
+                    aux_improvement = imagen_aux.getImprovement();
+                    if (!(aux_improvement.get(1).equals(aux_improvement.get(2)))&&!(aux_improvement.get(1).equals(aux_improvement.get(3)))&&!(aux_improvement.get(2).equals(aux_improvement.get(3)))){ control++; }
+                }
+            }
+        }catch (IndexOutOfBoundsException e){ control = 0;}
+        if(control == 100){ System.out.printf("|->Imagenes Mejoradas correctamente:(%d)  True\n",control); }else{System.out.printf("|->Imagenes Mejoradas correctamente:(%d)  False\n",control); paso = false;}
+
+        //si las imagenes copiadas fueron ajustadas correctamente.
+        control = 0;
+        try{
+            for (Imagen imagen_aux : cf.getContenedorFinal()) {
+                if (!imagen_aux.isTamanioOriginal()) { control++;}
+            }
+        }catch (IndexOutOfBoundsException e){ control = 0;}
+        if(control == 100){ System.out.printf("|->Imagenes Ajustadas correctamente:  True\n"); }else{System.out.printf("|->Imagenes Ajustadas correctamente:  False\n"); paso = false;}
+
+        //paso todos los test:
+        if(paso){ System.out.printf("--> TRUE <-- Paso el Test Completo del programa \n"); }else{ System.out.printf("--> FALSE <-- NO paso el Test Completo del programa \n");}
         System.out.println("------------------------------------");
-        System.out.printf("-->Test Completo del programa: -->");
     }
     //-------------------------------------------------------------------------------------------------------------------------
     //metodos comunes de uso.

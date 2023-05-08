@@ -17,8 +17,9 @@ public class ContenedorFinal {
     /**
      * Para agregar una imagen al contenedor final.
      */
-    public synchronized void copiar(){
-
+    public synchronized void copiar(Imagen imAux){
+        imAux.setNombre(imAux.getNombre()+".copia");
+        contenedorFinal.add(imAux);
     }
     public synchronized ArrayList<Imagen> getContenedorFinal() {
         return contenedorFinal;
