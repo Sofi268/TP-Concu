@@ -57,13 +57,13 @@ public class Estadistico implements Runnable{
             imprimir(pw);
         }catch (IOException e){}
     }
-    public void actualizarDatos(){
+    private void actualizarDatos(){
         imagenesCargadas = carga.getImagenesCargadas();
         imagenesMejoradas = mejora.getImagenesMejoradas();
         imagenesAjustadas = ajuste.getImagenesAjustadas();
         imagenesCopiadas = cargaCopia.getImagenesCopiadas();
     }
-    public void imprimir(PrintWriter pw){
+    private void imprimir(PrintWriter pw){
         pw.printf("------------------------------------------------------------------------\n");
         pw.printf("P1-Cantidad de imagenes insertadas en el contenedor incial: %s\n",imagenesCargadas);
         pw.printf("P2-Cantidad de imagenes mejoradas completamente: %s\n",imagenesMejoradas);

@@ -42,7 +42,7 @@ public class Main {
         Thread hilo0 = new Thread(log); hilo0.setPriority(1); hilos[0]=hilo0 ; //Estadistico.
 
         long startTimeMain = System.currentTimeMillis();
-        for (int i=0;i<=10;i++){ //iniciamos los hilos.
+        for (int i=0;i<=10;i++){   //iniciamos los hilos.
             hilos[i].start();
         }
 
@@ -51,7 +51,7 @@ public class Main {
                 hilos[i].join();
             }
             hilo0.join(); //hilo del estadistico
-        }catch(InterruptedException e){ throw new RuntimeException(e);}
+        }catch(InterruptedException e){ throw new RuntimeException(e); }
         long endTimeMain = System.currentTimeMillis();
         long t = endTimeMain - startTimeMain; //tiempo en miliSegundos.
         prueba.test_COMPLETO(ci,cf,t);

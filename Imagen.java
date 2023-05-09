@@ -5,8 +5,6 @@ import java.util.ArrayList;
  */
 public class Imagen {
     private String nombre;
-    private int largo;
-    private int ancho;
     private boolean iluminacionOriginal;
     private boolean tamanioOriginal;
     private ArrayList<String> improvement; //llevar la cuenta de que hilos tocaron la imagen.tamaño inicial es 10 pero se agranda a demanda.
